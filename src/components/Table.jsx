@@ -1,18 +1,21 @@
 import { Table } from 'antd';
 
-const TableContent = () => {
+const TableContent = ({ state }) => {
   const dataSource = [
     {
+      key: 1,
       id: 1,
       title: 'aaaaaaaa',
       body: 'fffffff',
     },
     {
+      key: 2,
       id: 2,
       title: 'aaaaaaaa',
       body: 'fffffff',
     },
     {
+      key: 3,
       id: 3,
       title: 'aaaaaaaa',
       body: 'fffffff',
@@ -36,6 +39,6 @@ const TableContent = () => {
       key: 'body',
     },
   ];
-  return <Table dataSource={dataSource} columns={columns} />;
+  return <Table dataSource={state} columns={columns} />;
 };
 export default TableContent;

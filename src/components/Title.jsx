@@ -3,7 +3,7 @@ import { UserOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import '../App.css';
 
-const Title = () => {
+const Title = ({ title, onChangeTitle }) => {
   const { Title } = Typography;
 
   return (
@@ -15,6 +15,8 @@ const Title = () => {
             size='large'
             placeholder='Basic usage'
             prefix={<UserOutlined />}
+            value={title}
+            onChange={onChangeTitle}
           />
         </Col>
       </Row>
