@@ -4,33 +4,39 @@ const TableContent = () => {
   const dataSource = [
     {
       key: '1',
-      name: 'Mike',
-      age: 32,
-      address: '10 Downing Street',
+      id: '1',
+      title: 'aaaaaaaa',
+      body: 'fffffff',
     },
     {
       key: '2',
-      name: 'John',
-      age: 42,
-      address: '10 Downing Street',
+      id: '2',
+      title: 'aaaaaaaa',
+      body: 'fffffff',
+    },
+    {
+      key: '3',
+      id: '3',
+      title: 'aaaaaaaa',
+      body: 'fffffff',
     },
   ];
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title',
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: 'Body',
+      dataIndex: 'body',
+      key: 'body',
     },
   ];
   return <Table dataSource={dataSource} columns={columns} />;
