@@ -49,6 +49,7 @@ const events = (state = [], action) => {
     //   省略可能;
     //   return [...state, { id, ...event }];
     case 'DELETE_EVENT':
+      return state.filter((event) => event.id !== action.id);
     case 'DELETE_ALL_EVENTS':
       return [];
     default:

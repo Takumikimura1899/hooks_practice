@@ -51,7 +51,7 @@ const App = () => {
           <Title title={title} onChangeTitle={onChangeTitle} />
           <Body body={body} onChangeBody={onChangeBody} />
           <ButtonArea addEvent={addEvent} />
-          <TableContent state={state} />
+          <TableContent state={state} dispatch={dispatch} />
           <Footer />
         </Content>
       </Layout>

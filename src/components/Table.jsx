@@ -1,26 +1,26 @@
-import { Table } from 'antd';
+import { Table, Button } from 'antd';
 
-const TableContent = ({ state }) => {
-  const dataSource = [
-    {
-      key: 1,
-      id: 1,
-      title: 'aaaaaaaa',
-      body: 'fffffff',
-    },
-    {
-      key: 2,
-      id: 2,
-      title: 'aaaaaaaa',
-      body: 'fffffff',
-    },
-    {
-      key: 3,
-      id: 3,
-      title: 'aaaaaaaa',
-      body: 'fffffff',
-    },
-  ];
+const TableContent = ({ state, dispatch }) => {
+  const TableState = state.map((event) => {
+    const id = event.id;
+    const handleClickDeleteButton = () => {
+      dispatch({ type: 'DELETE_EVENT', id });
+      console.log('aaaa');
+    };
+
+    return {
+      key: id,
+      id: id,
+      title: event.title,
+      body: event.body,
+      button: (
+        <Button type='primary' danger onClick={handleClickDeleteButton}>
+          削除
+        </Button>
+      ),
+    };
+  });
+  console.log(TableState);
 
   const columns = [
     {
@@ -38,7 +38,16 @@ const TableContent = ({ state }) => {
       dataIndex: 'body',
       key: 'body',
     },
+    {
+      title: 'Button',
+      dataIndex: 'button',
+      key: 'button',
+    },
   ];
-  return <Table dataSource={state} columns={columns} />;
+  return <Table dataSource={TableState} columns={columns} />;
 };
 export default TableContent;
+
+<Button type='primary' danger>
+  全てのイベントを削除する
+</Button>;
