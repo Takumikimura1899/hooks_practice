@@ -36,10 +36,20 @@ const App = () => {
       title,
       body,
     });
-
     setTitle('');
     setBody('');
   };
+
+  const deleteAllEvents = () => {
+    const result = window.confirm(
+      '全てのイベントを本当に削除しても良いですか？'
+    );
+    if (result) dispatch({ type: 'DELETE_ALL_EVENTS' });
+  };
+
+  const unCreatable = title === '' || body === '';
+
+  const stateLengthCheck = state.length === 0;
 
   console.log({ state });
 
@@ -50,7 +60,12 @@ const App = () => {
           <Header />
           <Title title={title} onChangeTitle={onChangeTitle} />
           <Body body={body} onChangeBody={onChangeBody} />
-          <ButtonArea addEvent={addEvent} />
+          <ButtonArea
+            addEvent={addEvent}
+            deleteAllEvents={deleteAllEvents}
+            unCreatable={unCreatable}
+            stateLengthCheck={stateLengthCheck}
+          />
           <TableContent state={state} dispatch={dispatch} />
           <Footer />
         </Content>
