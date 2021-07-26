@@ -1,5 +1,7 @@
 import { Table, Button } from 'antd';
 
+import { DELETE_EVENT } from '../actions';
+
 const TableContent = ({ state, dispatch }) => {
   const TableState = state.map((event) => {
     const id = event.id;
@@ -7,7 +9,7 @@ const TableContent = ({ state, dispatch }) => {
       const result = window.confirm(
         `このイベント(id=${id})を本当に削除しても良いですか`
       );
-      if (result) dispatch({ type: 'DELETE_EVENT', id });
+      if (result) dispatch({ type: DELETE_EVENT, id });
     };
 
     return {

@@ -1,7 +1,6 @@
 import { useState, useReducer } from 'react';
-
 import reducer from '../reducers';
-
+import { DELETE_ALL_EVENTS, CREATE_EVENT } from '../actions';
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import '../App.css';
@@ -32,7 +31,7 @@ const App = () => {
   const addEvent = () => {
     console.log({ title, body });
     dispatch({
-      type: 'CREATE_EVENT',
+      type: CREATE_EVENT,
       title,
       body,
     });
@@ -44,7 +43,7 @@ const App = () => {
     const result = window.confirm(
       '全てのイベントを本当に削除しても良いですか？'
     );
-    if (result) dispatch({ type: 'DELETE_ALL_EVENTS' });
+    if (result) dispatch({ type: DELETE_ALL_EVENTS });
   };
 
   const unCreatable = title === '' || body === '';
