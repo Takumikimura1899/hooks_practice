@@ -1,9 +1,11 @@
 import { useState, useReducer } from 'react';
 import reducer from '../reducers';
 import { DELETE_ALL_EVENTS, CREATE_EVENT } from '../actions';
+import AppContext from './contexts/AppContext';
 import { Layout } from 'antd';
-import 'antd/dist/antd.css';
+
 import '../App.css';
+import 'antd/dist/antd.css';
 
 import TableContent from './Table';
 import Header from './Header';
@@ -13,6 +15,8 @@ import ButtonArea from './ButtonArea';
 import Footer from './Footer';
 
 const { Content } = Layout;
+
+console.log({ AppContext });
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, []);
@@ -54,21 +58,23 @@ const App = () => {
 
   return (
     <>
-      <Layout style={{ textAlign: 'center' }}>
-        <Content style={{ margin: '60px 16px' }}>
-          <Header />
-          <Title title={title} onChangeTitle={onChangeTitle} />
-          <Body body={body} onChangeBody={onChangeBody} />
-          <ButtonArea
-            addEvent={addEvent}
-            deleteAllEvents={deleteAllEvents}
-            unCreatable={unCreatable}
-            stateLengthCheck={stateLengthCheck}
-          />
-          <TableContent state={state} dispatch={dispatch} />
-          <Footer />
-        </Content>
-      </Layout>
+      <AppContext.Provider value={'Hello, Hello'}>
+        <Layout style={{ textAlign: 'center' }}>
+          <Content style={{ margin: '60px 16px' }}>
+            <Header />
+            <Title title={title} onChangeTitle={onChangeTitle} />
+            <Body body={body} onChangeBody={onChangeBody} />
+            <ButtonArea
+              addEvent={addEvent}
+              deleteAllEvents={deleteAllEvents}
+              unCreatable={unCreatable}
+              stateLengthCheck={stateLengthCheck}
+            />
+            <TableContent state={state} dispatch={dispatch} />
+            <Footer />
+          </Content>
+        </Layout>
+      </AppContext.Provider>
     </>
   );
 };
